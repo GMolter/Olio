@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      input: resolve(__dirname, 'index.html'), // 👈 forces it to use the correct entry
+      input: resolve(__dirname, 'index.html'),
     },
   },
 });
