@@ -1,4 +1,4 @@
-import './App.css'; // ✅ correct path now
+import './App.css'; // ✅ correct
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
