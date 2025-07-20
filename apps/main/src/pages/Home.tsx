@@ -1,3 +1,5 @@
+import '../../App.css'
+
 export default function Home() {
   return (
     <div className="landing-container">
@@ -7,12 +9,11 @@ export default function Home() {
       <div className="splotch splotch-4"></div>
       <div className="splotch splotch-5"></div>
       <div className="splotch splotch-6"></div>
-
       <div className="content">
         <h1 className="title">Olio.one</h1>
         <p className="subtitle">Site coming soon</p>
         <div className="pulse-dot"></div>
       </div>
     </div>
-  );
+  )
 }
