@@ -7,5 +7,5 @@ export default function NotFound() {
         <a href="/" className="text-blue-500 underline mt-4 block">Back to home</a>
       </div>
     </div>
-  );
+  )
 }
