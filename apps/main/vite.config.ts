@@ -4,12 +4,11 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: './apps/main', // 👈 tell Vite where the actual app root is
   build: {
-    outDir: '../../dist', // ⬅ so the dist isn't inside apps/main
+    outDir: 'dist', // relative to apps/main
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, 'apps/main/index.html'),
+      input: resolve(__dirname, 'index.html'), // ✅ this works now
     },
   },
 });
