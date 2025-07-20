@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { fileURLToPath, URL } from 'node:url';
+import { resolve } from 'path';
 
 export default defineConfig({
-  root: fileURLToPath(new URL('.', import.meta.url)),
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+  build: {
+    rollupOptions: {
+      input: resolve(__dirname, 'index.html'), // 👈 forces it to use the correct entry
+    },
   },
 });
