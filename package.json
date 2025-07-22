@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "install:all": "npm install && cd apps/main && npm install && cd ../chat && npm install && cd ../admin && npm install",
-    "build:chat": "cd apps/chat && npm install && npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install:all": "npm install && cd apps/chat && npm install && cd ../main && npm install && cd ../admin && npm install",
+    "build:chat": "cd apps/chat && npm install && npm run build"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
