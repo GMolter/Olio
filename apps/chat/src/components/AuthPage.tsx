@@ -53,7 +53,23 @@ export default function AuthPage() {
       {/* Auth content */}
       <div className="auth-content">
         <div className="auth-card">
-          <h1 className="auth-title">Olio Chat</h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+            <div style={{ 
+              width: '48px', 
+              height: '48px', 
+              borderRadius: '12px', 
+              background: 'linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%)', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              fontSize: '1.8rem', 
+              color: '#667eea',
+              fontWeight: '700'
+            }}>
+              O
+            </div>
+            <h1 className="auth-title" style={{ margin: 0 }}>Olio Chat</h1>
+          </div>
           <p className="auth-subtitle">
             {isLogin ? 'Welcome back! Sign in to continue.' : 'Create your account to get started.'}
           </p>

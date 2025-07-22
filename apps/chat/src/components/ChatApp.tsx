@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { User, signOut } from 'firebase/auth';
 import { ref, push, onValue, off } from 'firebase/database';
 import { auth, database } from '../firebase';
-import { MessageCircle, Hash, LogOut, Send } from 'lucide-react';
+import { MessageCircle, Hash, LogOut, Send, Plus } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -18,10 +18,7 @@ interface ChatAppProps {
 }
 
 const defaultRooms = [
-  { id: 'general', name: 'general', icon: '💬' },
-  { id: 'random', name: 'random', icon: '🎲' },
-  { id: 'tech', name: 'tech', icon: '💻' },
-  { id: 'music', name: 'music', icon: '🎵' },
+  { id: 'general', name: 'General', icon: '💬' },
 ];
 
 export default function ChatApp({ user }: ChatAppProps) {
@@ -29,6 +26,7 @@ export default function ChatApp({ user }: ChatAppProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -106,7 +104,10 @@ export default function ChatApp({ user }: ChatAppProps) {
         {/* Sidebar */}
         <div className="chat-sidebar">
           <div className="chat-header">
-            <div className="chat-logo">Olio Chat</div>
+            <div className="chat-logo">
+              <div className="chat-logo-icon">O</div>
+              Olio Chat
+            </div>
             <div className="user-profile">
               <img 
                 src={user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || user.email || 'User')}&background=667eea&color=fff`}
@@ -130,9 +131,16 @@ export default function ChatApp({ user }: ChatAppProps) {
                 >
                   <span>{room.icon}</span>
                   <Hash size={16} />
-                  <span>{room.name}</span>
+                  <span>poc#{room.name}</span>
                 </div>
               ))}
+              <button 
+                className="add-room-button"
+                onClick={() => setShowModal(true)}
+                title="Create Room"
+              >
+                <Plus size={16} />
+              </button>
             </div>
           </div>
         </div>
@@ -142,7 +150,7 @@ export default function ChatApp({ user }: ChatAppProps) {
           <div className="chat-room-header">
             <div className="room-title">
               <Hash size={20} />
-              {defaultRooms.find(room => room.id === currentRoom)?.name || currentRoom}
+              poc#{defaultRooms.find(room => room.id === currentRoom)?.name || currentRoom}
             </div>
           </div>
 
@@ -180,7 +188,7 @@ export default function ChatApp({ user }: ChatAppProps) {
               <textarea
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                placeholder={`Message #${defaultRooms.find(room => room.id === currentRoom)?.name || currentRoom}`}
+                placeholder={`Message #poc${defaultRooms.find(room => room.id === currentRoom)?.name || currentRoom}`}
                 className="message-input"
                 rows={1}
                 onKeyDown={(e) => {
@@ -202,6 +210,24 @@ export default function ChatApp({ user }: ChatAppProps) {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2 className="modal-title">Create Custom Room</h2>
+            <p className="modal-text">
+              This feature is still in development. Stay tuned for the ability to create your own custom chat rooms!
+            </p>
+            <button 
+              className="modal-button"
+              onClick={() => setShowModal(false)}
+            >
+              Got it!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
