@@ -6,10 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "install:all": "npm install && cd apps/main && npm install && cd ../chat && npm install && cd ../admin && npm install",
     "lint": "eslint .",
     "preview": "vite preview",
-    "install:all": "npm install && cd apps/chat && npm install && cd ../main && npm install && cd ../admin && npm install",
+    "install:all": "npm install && cd apps/main && npm install && cd ../chat && npm install && cd ../admin && npm install",
     "build:chat": "cd apps/chat && npm install && npm run build"
   },
   "dependencies": {
