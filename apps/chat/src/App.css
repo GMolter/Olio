@@ -624,7 +624,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  min-height: 0; /* ADDED */
+  min-height: 0; /* Fix for flex overflow */
+  position: relative; /* for absolute input */
 }
 
 .chat-room-header {
@@ -647,13 +648,14 @@ body {
 }
 
 .messages-container {
-  flex: 1;
-  padding: 1rem;
+  flex: 1 1 auto;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-height: 0; /* ADDED */
+  min-height: 0;
+  padding: 1rem;
+  margin-bottom: 56px; /* Leave space for input */
 }
 
 .message {
@@ -699,7 +701,11 @@ body {
 }
 
 .message-input-container {
-  padding: 1rem 1rem 1rem 1rem; /* REMOVED extra bottom padding */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
