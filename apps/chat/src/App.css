@@ -624,6 +624,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  min-height: 0; /* ADDED */
 }
 
 .chat-room-header {
@@ -652,6 +653,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-height: 0; /* ADDED */
 }
 
 .message {
@@ -697,7 +699,7 @@ body {
 }
 
 .message-input-container {
-  padding: 1rem 1rem 2rem 1rem; /* added extra bottom padding */
+  padding: 1rem 1rem 1rem 1rem; /* REMOVED extra bottom padding */
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -707,7 +709,7 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: flex-end;
-  width: 100%; /* ensure full width */
+  width: 100%;
 }
 
 .message-input {
